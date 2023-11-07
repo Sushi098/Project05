@@ -1,0 +1,122 @@
+{% load static %}
+{% include './Header.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/registration.css' %}">
+    
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/js/solid.min.js" integrity="sha512-8lu2ZjeEHXD+qkS1UF5wsYQ08dg8yj6dqin/qFeDpeqMebKoLMj9zV92hdooBAYgG4DYhHv5miJ8f/t7NbPHsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" integrity="sha512-6/gTF62BJ06BajySRzTm7i8N2ZZ6StspU9uVWDdoBiuuNu5rs1a8VwiJ7skCz2BcvhpipLKfFerXkuzs+npeKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background: linear-gradient(120deg,#2980b9, #8e44ad);
+        }
+        a{
+            
+            place-items: center;
+            display: table-cell;
+            padding-top: 6px;
+          
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <h2>Marksheet</h2>
+        <div class="form-container">
+            <form method="POST">
+                {% if form.error %}
+                <p style="color:red;text-align:center;font-size:x-large;text-shadow:1px 0.6px rgb(255, 0, 0)"> {{ form.message }} </p>
+            {% else %}
+                <p style="color:rgb(58, 239, 58);text-align: center;text-shadow:1px 0.6px rgb(64, 238, 25)"> {{ form.message }} </p>
+            {% endif %}
+            <input type="hidden" name="id" value="{{ form.id }}">
+            <div class="input-name">
+                <label style="margin-right: 5px;">Roll No.<span style="color: red;margin-left:5px">*</span></label>
+                <span style="margin-right: 20px;">
+                    <i class="fa fa-id-card icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter Roll No" name="rollNumber" value="{{form.rollNumber}}" class="name" style="width: 60%;">
+                </span>
+
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:101px">{{ form.inputError.rollNumber }}</span>
+            </div>
+            <div class="input-name">
+                <label style="margin-right: 14px;">Name<span style="color: red;margin-left:5px">*</span></label>
+                <span style="margin-right: 20px;">
+                    <i class="fa fa-user icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter Your Name" name="name" value="{{form.name}}" class="name" style="width: 60%;">
+                </span>
+
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:101px">{{ form.inputError.name }}</span>
+            </div>
+            <div class="input-name">
+                <label style="margin-right: 5px;">Physics<span style="color: red;margin-left:5px">*</span></label>
+                <span style="margin-right: 20px;">
+                    <i class="fas fa-equals icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter Your Physics Marks" name="physics" value="{{form.physics}}" class="name" style="width: 60%;">
+                </span>
+
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:101px">{{ form.inputError.physics }}</span>
+            </div>
+            <div class="input-name">
+                <label style="margin-right: -11px;">Chemistry<span style="color: red;margin-left:5px">*</span></label>
+                <span style="margin-right: 20px;">
+                    <i class="fas fa-equals icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter Your Chemistry Marks" name="chemistry" value="{{form.chemistry}}" class="name" style="width: 60%;">
+                </span>
+
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:101px">{{ form.inputError.chemistry }}</span>
+            </div>
+            <div class="input-name">
+                <label style="margin-right: 10px;">Maths<span style="color: red;margin-left:5px">*</span></label>
+                <span style="text-align:right">
+                    <i class="fas fa-equals icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter Your Maths Marks" name="maths" value="{{form.maths}}" class="name" style="width: 60%;">
+                </span>
+
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:101px">{{ form.inputError.maths }}</span>
+            </div>
+            <div class="input-button">
+                <div class="row">
+               <input type="submit" class="button" value="save" style="margin-left:125px ;">
+               <!-- <span style="margin-right: 20px;">  <a href="" class="button-1" style="text-align:center">reset</a></span> -->
+               <a href="" class="button-1" style="text-align:center">reset</a>
+               </div>
+            </div>
+            </form>
+            
+
+           
+        </div>
+
+    </div>
+
+  
+</body>
+
+</html>
+{% include './Footer.html' %}
+
+
+

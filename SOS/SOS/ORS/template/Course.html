@@ -1,0 +1,79 @@
+{% load static %}
+{% include './Header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/registration.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/js/solid.min.js" integrity="sha512-8lu2ZjeEHXD+qkS1UF5wsYQ08dg8yj6dqin/qFeDpeqMebKoLMj9zV92hdooBAYgG4DYhHv5miJ8f/t7NbPHsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" integrity="sha512-6/gTF62BJ06BajySRzTm7i8N2ZZ6StspU9uVWDdoBiuuNu5rs1a8VwiJ7skCz2BcvhpipLKfFerXkuzs+npeKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background: linear-gradient(120deg,#2980b9, #8e44ad);
+        }
+        a{
+            
+            place-items: center;
+            display: table-cell;
+            padding-top: 6px;
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Course </h2>
+        <div class="form-container">
+            <form method="POST">
+                {% if form.error %}
+                <p style="color:rgb(255, 47, 0);text-align:center;font-size:x-large;text-shadow:1px 0.6px rgb(255, 0, 0)"> {{ form.message }} </p>
+            {% else %}
+                <p style="color:rgb(41, 240, 41);text-align: center;text-shadow:1px .6px rgb(73, 187, 2)"> {{ form.message }} </p>
+            {% endif %}
+            <input type="hidden" name="id" value="{{ form.id }}">
+            <div class="input-name">
+                <i class="fas fa-book-open icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Course Name" name="courseName" value="{{form.courseName}}" class="text-name">
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:5px">{{form.inputError.courseName}}</span>
+            </div>
+            <div class="input-name">
+                <i class="fa fa-paragraph icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Course Description" name="courseDescription" value="{{form.courseDescription}}" class="text-name">
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:5px">{{form.inputError.courseDescription}}</span>
+            </div>
+            <div class="input-name">
+                <i class="fas fa-clock icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Course Duration" name="courseDuration" value="{{form.courseDuration}}" class="text-name">
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:5px">{{form.inputError.courseDuration}}</span>
+            </div>
+           
+           
+            <div class="input-button">
+                <div class="row">
+               <input type="submit" class="button" value="save" style="margin-left:125px;">
+               <!-- <span style="margin-right: 20px;">  <a href="" class="button-1" style="text-align:center">reset</a></span> -->
+               <a href="" class="button-1" style="text-align:center">reset</a>
+               </div>
+            </div>
+            </form>
+            
+
+           
+        </div>
+
+    </div>
+    
+</body>
+{% include './Footer.html' %}
+</html>

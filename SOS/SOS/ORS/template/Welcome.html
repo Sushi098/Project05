@@ -1,0 +1,31 @@
+{% include "./Header.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image: url("{% static 'nature2.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+</style>
+<body>
+ <div class="d-flex" style="margin-top:15%">
+
+        <div class="mx-auto">
+            <p>
+                <h1><mark style="background-color: rgb(220, 220, 220,0.6);border-radius: 10px; ">WELCOME TO ONLINE RESULT SYSTEM</mark></h1>
+            </p>
+            <h6 align="center" style="font-size:x-large; color:violet;">{{form.message}}</h6>
+
+        </div>
+    </div>
+
+</body>
+</html>
+{% include "./Footer.html" %}

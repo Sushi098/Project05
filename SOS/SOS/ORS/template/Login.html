@@ -1,0 +1,72 @@
+{% include "./Header.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{% static '/style.css' %}">
+
+  <style>
+    body {
+      background-image: url("{% static 'wallpaper5.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .center {
+      background: rgba(47, 79, 79, 0.6);
+
+    }
+  </style>
+</head>
+<br>
+<br>
+
+<body>
+  <div class="center">
+    {% if form.out %}
+    <h3 style="color:rgb(122, 241, 43);text-align: center;font-family: bold;text-shadow:2px 0.6px rgb(237, 47, 244)">{{ form.out }}</h3>
+    {% endif %}
+
+    <h1>Login</h1>
+    {% if request.session.msg != None %}
+    <h3
+      style="color:rgb(230, 21, 21);text-align: center; font-size: 20px; font-family:'Times New Roman', Times, serif;">
+      {{ request.session.msg }}</h3>
+    {% endif %}
+    {% if form.error %}
+    <p style="color: red;text-align: center;"> {{ form.message }}</p>
+    {% else %}
+    <p style="color:rgb(33, 216, 33) ;text-align: center; text-shadow:2px 2px red"> {{ form.message }}</p>
+    {% endif %}
+    <form method="POST" novalidate>
+      <div class="txt_field">
+        <input type="text" required value="{{ form.login_id }}" name="login_id">
+        <span></span>
+        <label>Email</label>
+        <span style="color:red">{{ form.inputError.login_id }}</span>
+      </div>
+      <div class="txt_field">
+        <input type="password" required value="{{ form.password }}" name="password">
+        <span></span>
+        <label>Password</label>
+        <span style="color:red">{{ form.inputError.password }}</span>
+      </div>
+      <div class="pass"><a href="/ORS/ForgetPassword">Forgot Password?</a></div>
+      <input type="submit" value="Login">
+      <div class="signup_link">
+        Not a member? <a href="/ORS/Registration">Signup</a>
+      </div>
+    </form>
+  </div>
+
+
+
+</body>
+{% include './Footer.html' %}
+
+</html>

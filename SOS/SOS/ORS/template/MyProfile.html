@@ -1,0 +1,136 @@
+{% load static %}
+{% include './Header.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/registration.css' %}">
+    
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            background: linear-gradient(120deg,#2980b9, #8e44ad);
+        }
+    </style>
+</head>
+<style>
+    
+    p { 
+        display: inline-block;
+        width: 50%;
+        
+    }
+    .name1{
+        width: 45%;
+        padding: 8px 0 8px 40px;
+        border: 1px solid rgb(49, 232, 235);
+        margin-right: 15px;
+        border-bottom: 2px solid orange;
+    }
+    .text-email{
+        width: 95%;
+        padding: 8px 0 8px 40px;
+        border: 2px solid rgb(74, 242, 242);
+        border-bottom: 2px solid orange;
+
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <h2>My Profile Information</h2>
+        <div class="form-container">
+            <form method="POST">
+                {% if form.error %}
+                <p style="color:red;text-align:center;font-size:x-large;"> {{ form.message }} </p>
+            {% else %}
+                <p style="color:green;text-align: center;"> {{ form.message }} </p>
+            {% endif %}
+            <input type="hidden" name="id" value="{{ form.id }}">
+            <div class="input-name">
+                <i class="fa fa-user icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <p style="cursor: pointer;" name="firstName" value="{{form.firstName}}" class="name1">{{ form.firstName}}</p>
+                
+                    <i class="fa fa-user icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                    <p style="cursor: pointer;" name="lastName" value="{{form.lastName}}" class="name1">{{ form.lastName}}</p>
+                
+
+            </div>
+            <div class="input-name">
+                <span style="color: red;">{{ form.inputError.firstName }}</span>
+                <span style="color: red;">{{ form.inputError.lastName }}</span>
+            </div>
+            <div class="input-name">
+                <i class="fa fa-envelope icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <p style="cursor: pointer;" name="login_id" value="{{form.login_id}}" class="text-email">{{ form.login_id }}</p>
+            </div>
+            <div class="input-name">
+                <span style="color: red;">{{form.inputError.login_id}}</span>
+            </div>
+
+            <div class="input-name">
+                <i class="fa fa-lock icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <p style="cursor: pointer;" name="password" value="{{form.password}}" class="text-email">{{ form.password }}</p>
+                
+            </div>
+            <div class="input-name">
+                <span style="color: red;">{{ form.inputError.password }}</span>
+                
+            </div>
+            
+            <div class="input-name">
+                <i class="fa fa-address-book icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <p style="cursor: pointer;" class="name1" name="gender" value="{{form.gender}}">{{ form.gender }}</p>
+
+                
+                    <i class="fa fa-calendar icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                    <p style="cursor: pointer;" name="dob" value="{{form.dob}}" class="name1">{{ form.dob }}</p>
+                
+
+
+            </div>
+            <div class="input-name">
+                <span style="color: red";>{{ form.inputError.gender }}</span>
+                <span style="color: red";>{{ form.inputError.dob }}</span>
+            </div>
+            <div class="input-name">
+                <i class="fa fa-address-book icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <p style="cursor: pointer;" name="address" value="{{form.address}}" class="name1">{{ form.address }}</p>
+                
+                    <i class="fa fa-mobile icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                    <p style="cursor: pointer;" name="mobilenumber" value="{{form.mobilenumber}}" class="name1">{{ form.mobilenumber }}</p>
+
+              
+
+            </div>
+            <div class="input-name">
+                <span style="color: red";>{{ form.inputError.address }}</span>
+                <span style="color: red";>{{ form.inputError.mobilenumber }}</span>
+            </div>
+            
+            
+            
+            </form>
+            
+
+           
+        </div>
+
+    </div>
+
+  
+</body>
+
+</html>
+{% include './Footer.html' %}
+
+
+

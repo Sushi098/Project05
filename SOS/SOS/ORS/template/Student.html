@@ -1,0 +1,109 @@
+{% load static %}
+{% include './Header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/registration.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/js/solid.min.js" integrity="sha512-8lu2ZjeEHXD+qkS1UF5wsYQ08dg8yj6dqin/qFeDpeqMebKoLMj9zV92hdooBAYgG4DYhHv5miJ8f/t7NbPHsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" integrity="sha512-6/gTF62BJ06BajySRzTm7i8N2ZZ6StspU9uVWDdoBiuuNu5rs1a8VwiJ7skCz2BcvhpipLKfFerXkuzs+npeKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background: linear-gradient(120deg,#2980b9, #8e44ad);
+        }
+        a{
+            
+            place-items: center;
+            display: table-cell;
+            padding-top: 6px;
+          
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student </h2>
+        <div class="form-container">
+            <form method="POST">
+                {% if form.error %}
+                <p style="color:red;text-align:center;font-size:x-large;text-shadow:1px 0.6px rgb(255, 0, 0)"> {{ form.message }} </p>
+            {% else %}
+                <p style="color:rgb(59, 235, 59);text-align: center;text-shadow:1px 0.6px rgb(36, 246, 8)"> {{ form.message }} </p>
+            {% endif %}
+            <input type="hidden" name="id" value="{{ form.id }}">
+            <div class="input-name">
+                <i class="fa fa-user icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter First Name" name="firstName" value="{{form.firstName}}" class="name">
+                <span>
+                    <i class="fa fa-user icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter Last Name" name="lastName" value="{{form.lastName}}" class="name">
+                </span>
+
+            </div>
+            <div class="row" style="margin:-13px 0 13px 0">
+                <div class="col-lg-6">
+                    <span style="color: red;margin-left:7px;">{{ form.inputError.firstName }}</span>
+                    
+                </div>
+                <div class="col-lg-6">
+                    <span style="color: red;">{{ form.inputError.lastName }}</span>
+    
+                </div>
+                </div>
+            <div class="input-name">
+                <label for="collegeName">College Name<span style="color: red;margin-left:2px">*</span></label>
+                <select class="role" name="college_ID">
+                    
+                    <option value="{{form.college_ID}}">{{ form.collegeName }}</option>
+                    {% for form in collegeList %}
+                    <option value="{{ form.id }}">{{ form.collegeName }}</option>
+                    {% endfor %}
+                </select>
+                <span style="color:red;margin-left:1px">{{ form.inputError.college_ID }}</span>
+
+            </div>
+            
+            <div class="input-name">
+                <i class="fas fa-calendar icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="date" placeholder="Enter your dob" name="dob" value="{{form.dob}}" class="text-name">
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:1px">{{form.inputError.dob}}</span>
+            </div>
+            <div class="input-name">
+                <i class="fa fa-mobile icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="text" placeholder="Enter your Mobile No." name="mobileNumber" value="{{form.mobileNumber}}" class="text-name">
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:1px">{{form.inputError.mobileNumber}}</span>
+            </div>
+            <div class="input-name">
+                <i class="fa fa-envelope icon" style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                <input type="email" placeholder="Enter your Email" name="email" value="{{form.email}}" class="text-name">
+            </div>
+            <div class="input-name">
+                <span style="color: red;margin-left:1px">{{form.inputError.email}}</span>
+            </div>
+            <div class="input-button">
+                <div class="row">
+               <input type="submit" class="button" value="save" style="margin-left:125px ;">
+               <!-- <span style="margin-right: 20px;">  <a href="" class="button-1" style="text-align:center">reset</a></span> -->
+               <a href="" class="button-1" style="text-align:center">reset</a>
+               </div>
+            </div>
+            </form>
+            
+
+           
+        </div>
+
+    </div>
+    
+</body>
+{% include './Footer.html' %}
+</html>

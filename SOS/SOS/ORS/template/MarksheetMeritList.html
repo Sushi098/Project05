@@ -1,0 +1,69 @@
+{% include  "./Header.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    th, td{
+        text-align: center;
+    }
+    .table {
+        color: rgb(22, 23, 23);
+        background-color:none;
+    }
+    body{
+        background-image: url("{% static '/nature1.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    }
+    td{
+        background-color: lavender;
+    }
+</style>
+<body>
+    <div class="container-fluid">
+        <div>
+            <br>
+            <H2 align="center">Marksheet Merit List</H2><br>
+        </div>
+        <form method="POST">
+            <div class="row">
+            <div class="col-md-12">
+                <table class="table table-sm table-bordered table-hover table-responsive-sm">
+                    <thead class="thead-dark">
+                        <th scope="row">Rank</th>
+                        <th scope="row">Roll No </th>
+                        <th scope="row">Name</th>
+                        <th scope="row">Physics </th>
+                        <th scope="row">Chemistry </th>
+                        <th scope="row">Maths </th>
+                        <th scope="row">Total</th>
+                        <th scope="row">Percentage</th>
+                    </thead>
+                    <tbody>
+                        {% for e in pageList %}
+                        <tr>
+                            <td>{{ form.index|add:forloop.counter0 }}</td>
+                            <td>{{e.rollNumber}}</td>
+                            <td>{{e.name}}</td>
+                            <td>{{e.physics}}</td>
+                            <td>{{e.chemistry}}</td>
+                            <td>{{e.maths}}</td>
+                            <td>{{e.total}}</td>
+                            <td>{{e.percentage|floatformat:2}} %</td>
+                        {% endfor %}
+                        </tr>                        
+                    </tbody>
+                </table>
+                <a class="btn btn-primary" style="margin-left:720px;" href="/ORS/Welcome">Back</a>
+            </div>
+    
+</body>
+{% include  "./Footer.html"%}
+</html>

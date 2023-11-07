@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% if request.session.name == None %}
+    <div style="position:fixed;text-align:center;">
+        <p style="position:fixed;bottom:-20;width:100%;background-color:teal;padding:10px 10px;color:black;border-top:3px solid orange">
+            <b>Copyright &copy; Rays Technologies</b> <b >Since-2006</b>
+        </p>
+    </div>
+    {% else  %}
+    <div style="position:fixed;text-align:center;">
+        <p style="position:fixed;bottom:-20;width:100%;background-color: transparent;padding:10px 10px;color:black;border-top:3px solid transparent">
+            <b>Copyright &copy; Rays Technologies</b> <b >Since-2006</b>
+        </p>
+    </div>
+    {% endif %}
+</body>
+</html>

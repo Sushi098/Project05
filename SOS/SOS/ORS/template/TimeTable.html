@@ -1,0 +1,133 @@
+{% load static %}
+{% include './Header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/registration.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/js/solid.min.js"
+        integrity="sha512-8lu2ZjeEHXD+qkS1UF5wsYQ08dg8yj6dqin/qFeDpeqMebKoLMj9zV92hdooBAYgG4DYhHv5miJ8f/t7NbPHsA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css"
+        integrity="sha512-6/gTF62BJ06BajySRzTm7i8N2ZZ6StspU9uVWDdoBiuuNu5rs1a8VwiJ7skCz2BcvhpipLKfFerXkuzs+npeKA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+        }
+
+        a {
+
+            place-items: center;
+            display: table-cell;
+            padding-top: 6px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Time Table Information</h2>
+        <div class="form-container">
+            <form method="POST">
+                {% if form.error %}
+                <p style="color:red;text-align:center;font-size:x-large;text-shadow:1px 0.6px rgb(255, 0, 0)"> {{ form.message }} </p>
+                {% else %}
+                <p style="color:rgb(49, 238, 49);text-align: center;text-shadow:1px 0.6px rgb(61, 245, 10)"> {{ form.message }} </p>
+                {% endif %}
+                <input type="hidden" name="id" value="{{ form.id }}">
+                <div class="input-name">
+
+                    <i class="fas fa-clock icon"
+                        style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                    <select class="role" name="examTime" style="text-align: center;">
+                        <!-- <option value="" hidden>---- Select Exam Time ----</option> -->
+                        <option>7:00 AM to 10:00 AM</option>
+                        <option>11:00 AM to 2:00 PM</option>
+                        <option>3:00 PM to 6:00 PM</option>
+                    </select>
+                    <span style="color:red;margin-left:1px">{{ form.inputError.examTime }}</span>
+
+                </div>
+                <div class="input-name">
+
+                    <i class="fa fa-calendar icon"
+                        style="position:absolute; font-size: 24px;border-right: 1px solid rgb(228, 153, 14); margin:8px 6px ; padding-right:4px"></i>
+                    <input type="date" placeholder="dd-mm-yyyy" name="examDate" value="{{ form.examDate }}"
+                        class="text-name" style="text-align: center;">
+                </div>
+                <div class="input-name">
+                    <span style="color: red; margin-left:1px">{{form.inputError.examDate}}</span>
+                </div>
+                <div class="input-name">
+                    <label for="course_ID">Course Name<span style="color: red;margin-left:2px">*</span></label>
+                    <select class="role" name="course_ID" style="text-align: center;">
+                        <!-- <option value="">---- Select Course Name ----</option> -->
+                        <option value="{{form.course_ID}}">{{ form.courseName }}</option>
+                        {% for form in courseList %}
+                        <option value="{{ form.id }}">{{ form.courseName }}</option>
+                        {% endfor %}
+                    </select>
+                    <span style="color:red;margin-left:1px">{{ form.inputError.course_ID }}</span>
+
+                </div>
+                <div class="input-name">
+                    <label for="subjectName">Subject Name<span style="color: red;margin-left:2px">*</span></label>
+                    <select class="role" name="subject_ID" style="text-align: center;">
+                        <!-- <option value="">---- Select a subject Name ----</option> -->
+                        <option value="{{form.subject_ID}}">{{ form.SubjectName }}</option>
+                        {% for form in subjectList %}
+                        <option value="{{ form.id }}">{{ form.SubjectName }}</option>
+                        {% endfor %}
+                    </select>
+                    <span style="color:red;margin-left:1px">{{ form.inputError.subject_ID }}</span>
+
+                </div>
+                <div class="input-name">
+                    <label for="semester">Semester<span style="color: red;margin-left:2px">*</span></label>
+                    <select class="role" name="semester" style="text-align: center;">
+                        <!-- <option value="" hidden>---- Select Semester ----</option> -->
+                        <option value="{{form.semester}}">{{ form.semester }}</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+
+                    </select>
+                    <span style="color:red;margin-left:1px">{{ form.inputError.semester }}</span>
+
+                </div>
+
+
+
+
+                <div class="input-button">
+                    <div class="row">
+                        <input type="submit" class="button" value="save" style="margin-left:140px ;">
+                        <!-- <span style="margin-right: 20px;">  <a href="" class="button-1" style="text-align:center">reset</a></span> -->
+                        <a href="" class="button-1" style="text-align:center">reset</a>
+                    </div>
+                </div>
+            </form>
+
+
+
+        </div>
+
+    </div>
+
+</body>
+{% include './Footer.html' %}
+
+</html>
